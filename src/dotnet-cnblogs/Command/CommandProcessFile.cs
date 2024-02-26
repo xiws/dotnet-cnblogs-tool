@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using Dotnetcnblog.TagHandlers;
 using Dotnetcnblog.Utils;
@@ -46,9 +47,9 @@ namespace Dotnetcnblog.Command
                     var fileContent = File.ReadAllText(FilePath);
                     var imgHandler = new ImageHandler();
                     var imgList = imgHandler.Process(fileContent);
-
+                    
                     ConsoleHelper.PrintMsg($"提取图片成功，共 {imgList.Count} 个。");
-
+                    
                     //循环上传图片
                     foreach (var img in imgList)
                     {
@@ -81,10 +82,12 @@ namespace Dotnetcnblog.Command
                     //替换
                     fileContent = ReplaceDic.Keys.Aggregate(fileContent, (current, key) => current.Replace(key, ReplaceDic[key]));
 
-                    var newFileName = FilePath.Substring(0, FilePath.LastIndexOf('.')) + "-cnblog" + Path.GetExtension(FilePath);
-                    File.WriteAllText(newFileName, fileContent, FileEncodingType.GetType(FilePath));
-
-                    ConsoleHelper.PrintMsg($"处理完成！文件保存在：{newFileName}");
+                    var newFileName = new FileInfo(FilePath).Name.Replace(".md", "");
+                    
+                    // 写入生成的结果
+                    //File.WriteAllText(newFileName, fileContent, FileEncodingType.GetType(FilePath));
+                    var postId = PostBlogHelper.PostBlog(newFileName, fileContent);
+                    ConsoleHelper.PrintMsg($"处理完成！发布文件到博客园成功，PostId：{postId}");
                 }
             }
             catch (Exception e)

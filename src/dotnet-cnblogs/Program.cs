@@ -82,6 +82,7 @@ namespace Dotnetcnblog
                 Encoding.UTF8.GetString(TeaHelper.Decrypt(Convert.FromBase64String(config.Password), context.EncryptKey));
             context.ConnectionInfo = config;
             ImageUploadHelper.Init(config);
+            PostBlogHelper.Init(config);
             CommandContextStore.Set(context);
             return true;
         }

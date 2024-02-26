@@ -8,17 +8,17 @@
     <TieredCompilation>true</TieredCompilation>
     <TargetFramework>net5.0</TargetFramework>
     <ApplicationIcon>program.ico</ApplicationIcon>
-    <PackageId>dotnet-cnblog</PackageId>
+    <PackageId>cnblog</PackageId>
     <Authors>stulzq</Authors>
     <Company>stulzq</Company>
-    <Product>dotnet-cnblog</Product>
+    <Product>cnblog</Product>
     <Description>Cnblogs Article Quick Publish Tool.</Description>
     <Copyright>Copyright 2018-2020 stulzq</Copyright>
     <PackageProjectUrl>https://github.com/stulzq/dotnet-cnblogs-tool</PackageProjectUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageTags>cnblogs</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.4.2</Version>
+    <Version>1.4.3</Version>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
